@@ -6,8 +6,9 @@ html {
     width: 100vw;
 }
 
-*,
-button { /* To receive click events on iOS */ cursor: pointer !important; }
+button {
+    cursor: pointer !important;
+}
 
 a {
     color: $white;

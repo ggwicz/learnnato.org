@@ -53,7 +53,7 @@ class LearnNato {
      * @since 1.0.0
      */
     bindClicks() {
-        window.addEventListener( 'click', event => {
+        document.addEventListener( 'click', event => {
             if ( 'undefined' === typeof event.target.dataset.action ) {
                 return;
             }
