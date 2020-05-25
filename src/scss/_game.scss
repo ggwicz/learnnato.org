@@ -1,0 +1,52 @@
+.game {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: calc( 100vh - 2rem );
+    justify-content: center;
+    padding: 1rem;
+    position: relative;
+    width: calc( 100vw - 2rem );
+
+    &__nav {
+        left: 0;
+        padding: 1rem;
+        position: absolute;
+        top: 0;
+        width: calc( 100% - 2rem );
+    }
+
+    &__state {
+        display: none;
+    }
+}
+
+.game[data-active-state=intro] {
+    .game__state {
+        display: none;
+    }
+
+    .game__state.intro {
+        display: block;
+    }
+}
+
+.game[data-active-state=instructions] {
+    .game__state {
+        display: none;
+    }
+
+    .game__state.instructions {
+        display: block;
+    }
+}
+
+.game[data-active-state=play] {
+    .game__state {
+        display: none;
+    }
+
+    .game__state.play {
+        display: block;
+    }
+}

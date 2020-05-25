@@ -1,8 +1,9 @@
-// Base.
-@import 'base/config';
-@import 'base/structure';
-@import 'base/typography';
+// vars
+@import 'vars';
 
-// Components.
-@import 'components/header';
-@import 'components/gameplay';
+// normalize.css
+@import 'normalize';
+
+// app styles
+@import 'base';
+@import 'game';
