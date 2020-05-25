@@ -49,7 +49,6 @@ class LearnNato {
         buttons.forEach( button => {
             button.addEventListener( 'click', this.test );
             button.addEventListener( 'touchstart', this.test );
-            button.addEventListener( 'touchend', this.test );
         } );
         // document.addEventListener( '' )
         // document.addEventListener( 'click', event => {
