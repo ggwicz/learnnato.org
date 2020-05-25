@@ -356,7 +356,6 @@ a {
 
 .game {
   align-items: center;
-  cursor: pointer;
   display: flex;
   flex-direction: column;
   height: calc( 100vh - 2rem );
