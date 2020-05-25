@@ -19,6 +19,10 @@
     &__state {
         display: none;
     }
+
+    button {
+        cursor: pointer;
+    }
 }
 
 .game[data-active-state=intro] {

@@ -370,6 +370,9 @@ a {
 .game__state {
   display: none;
 }
+.game button {
+  cursor: pointer;
+}
 
 .game[data-active-state=intro] .game__state {
   display: none;
