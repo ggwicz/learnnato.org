@@ -17,15 +17,6 @@ class LearnNato {
     els = {};
 
     /**
-     * Game state.
-     *
-     * @since 1.0.0
-     *
-     * @var {object}
-     */
-    state = {};
-
-    /**
      * Constructor.
      *
      * @since 1.0.0
@@ -53,17 +44,34 @@ class LearnNato {
      * @since 1.0.0
      */
     bindClicks() {
-        document.addEventListener( 'click', event => {
-            if ( 'undefined' === typeof event.target.dataset.action ) {
-                return;
-            }
+        const buttons = document.querySelectorAll( 'button' );
 
-            event.preventDefault();
-
-            this.setGameState( event.target.dataset.action );
+        buttons.forEach( button => {
+            button.addEventListener( 'click', this.test );
+            button.addEventListener( 'touchstart', this.test );
+            button.addEventListener( 'touchend', this.test );
         } );
+        // document.addEventListener( '' )
+        // document.addEventListener( 'click', event => {
+        //     if ( 'undefined' === typeof event.target.dataset.action ) {
+        //         return;
+        //     }
+
+        //     this.setGameState( event.target.dataset.action );
+        // } );
+
+        // document.querySelector( '.intro__button' ).addEventListener( 'touchstart', event => {
+        //     if ( 'undefined' === typeof event.target.dataset.action ) {
+        //         return;
+        //     }
+
+        //     this.setGameState( event.target.dataset.action );
+        // } );
     }
 
+    test( ) {
+        alert( 'hi' )
+    }
 
     /**
      * Init game's main click event handlers.
