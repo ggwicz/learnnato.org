@@ -345,6 +345,12 @@ html {
   width: 100vw;
 }
 
+*,
+button {
+  /* To receive click events on iOS */
+  cursor: pointer !important;
+}
+
 a {
   color: #fff;
   text-decoration: none;
@@ -352,6 +358,7 @@ a {
 
 .game {
   align-items: center;
+  cursor: pointer;
   display: flex;
   flex-direction: column;
   height: calc( 100vh - 2rem );
@@ -369,9 +376,6 @@ a {
 }
 .game__state {
   display: none;
-}
-.game button {
-  cursor: pointer;
 }
 
 .game[data-active-state=intro] .game__state {
