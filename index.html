@@ -25,8 +25,8 @@
 
             <main>
                 <section class="intro__buttons">
-                    <button type="button" class="intro__button" data-action="instructions">Instructions</button>
-                    <button type="button" class="intro__button" data-action="play">Play</button>
+                    <button id="foo" type="button" class="intro__button" data-action="instructions">Instructions</button>
+                    <button id="bar" type="button" class="intro__button" data-action="play">Play</button>
                 </section>
             </main>
         </section>
@@ -92,12 +92,9 @@
 
     <script src="src/js/app.js"></script>
     <script>
-        // window.addEventListener( 'DOMContentLoaded', event => {
-            const gameEl = document.querySelector( '.game' );
-            const game = new LearnNato( gameEl );
-
-            game.init();
-        // } );
+        window.addEventListener( 'DOMContentLoaded', event => {
+            LearnNato.init();
+        } );
     </script>
 </body>
 </html>
