@@ -6,62 +6,98 @@
     <meta name="description" content="A simple tool for learning and practicing the NATO phonetic alphabet.">
     <meta name="author" content="George Gecewicz">
     <title>Learn the NATO Alphabet</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400&display=swap" rel="stylesheet">
-    <script src="dist/bundle.js"></script>
+    <link href="dist/index.css" rel="stylesheet">
 </head>
 <body>
-    <div class="page" id="page">
+    <div class="game" data-active-state="intro">
 
-        <header class="header">
-            <p>The <a href="https://en.wikipedia.org/wiki/NATO_phonetic_alphabet" target="_blank">NATO phonetic alphabet</a> is useful and easy to learn.</p>
-
-            <section class="header__controls">
-                <span class="header__button">Instructions</span>
-                <span class="header__button">Play</span>
-            </section>
-
-            <section class="header__results">
-                <ol>
-                    <li class="header__results--success">A</li>
-                    <li class="header__results--success">B</li>
-                    <li>C</li>
-                    <li class="header__results--fail">D</li>
-                    <li>E</li>
-                    <li>F</li>
-                    <li class="header__results--success">G</li>
-                    <li>H</li>
-                    <li>I</li>
-                    <li>J</li>
-                    <li>K</li>
-                    <li>L</li>
-                    <li>M</li>
-                    <li>N</li>
-                    <li>O</li>
-                    <li>P</li>
-                    <li>Q</li>
-                    <li>R</li>
-                    <li>S</li>
-                    <li>T</li>
-                    <li>U</li>
-                    <li>V</li>
-                    <li>W</li>
-                    <li>X</li>
-                    <li>Y</li>
-                    <li>Z</li>
-                </ol>
-            </section>
+        <header class="game__nav">
+            <button type="button" class="game__back" data-action="intro">&larr;</button>
         </header>
 
-        <main class="gameplay" id="gameplay">
-            <span class="gameplay__letter">R</span>
+        <!--
+            STATE: Intro/default.
+        -->
+        <section class="intro game__state" data-state="intro">
+            <header>
+                <p>The <a href="https://en.wikipedia.org/wiki/NATO_phonetic_alphabet" target="_blank">NATO phonetic alphabet</a> is useful and easy to learn.</p>
+            </header>
 
-            <section class="gameplay__controls">
-                <input type="text" class="gameplay__input" placeholder="Your guess?" />
-                <br />
-                <span class="gameplay__button">Submit</span>
-            </section>
-        </main>
+            <main>
+                <section class="intro__buttons">
+                    <button type="button" class="intro__button" data-action="instructions">Instructions</button>
+                    <button type="button" class="intro__button" data-action="play">Play</button>
+                </section>
+            </main>
+        </section>
+
+        <!--
+            STATE: Instructions.
+        -->
+        <section class="instructions game__state" data-state="instructions">
+            <header>
+                <h3>Instructions</h3>
+            </header>
+
+            <main>
+                <p></p>
+            </main>
+        </section>
+
+        <!--
+            STATE: Game.
+        -->
+        <section class="play game__state" data-state="play">
+            <header>
+                <section class="results">
+                    <span class="result result--success">A</span>
+                    <span class="result result--success">B</span>
+                    <span class="result">C</span>
+                    <span class="result result--missed">D</span>
+                    <span class="result">E</span>
+                    <span class="result">F</span>
+                    <span class="result result--success">G</span>
+                    <span class="result result--success">H</span>
+                    <span class="result">I</span>
+                    <span class="result">J</span>
+                    <span class="result">K</span>
+                    <span class="result result--success">L</span>
+                    <span class="result">M</span>
+                    <span class="result">N</span>
+                    <span class="result">O</span>
+                    <span class="result">P</span>
+                    <span class="result">Q</span>
+                    <span class="result result--missed">R</span>
+                    <span class="result">S</span>
+                    <span class="result">T</span>
+                    <span class="result result--missed">U</span>
+                    <span class="result">V</span>
+                    <span class="result">W</span>
+                    <span class="result">X</span>
+                    <span class="result">Y</span>
+                    <span class="result">Z</span>
+                </section>
+            </header>
+
+            <main>
+                <form novalidate>
+                    <label>A</label>
+                    <input placeholder="" />
+                    <button type="button">Submit</button>
+                </form>
+            </main>
+        </section>
 
     </div>
+
+    <script src="src/js/app.js"></script>
+    <script>
+        window.addEventListener( 'DOMContentLoaded', event => {
+            const gameEl = document.querySelector( '.game' );
+            const game = new LearnNato( gameEl );
+
+            game.init();
+        } );
+    </script>
 </body>
 </html>
