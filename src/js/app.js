@@ -1,6 +1,4 @@
 /**
- * LearnNato.js
- *
  * A simple game for learning and practicing the NATO alphabet.
  *
  * @author George Gecewicz
@@ -8,24 +6,21 @@
 
 const LearnNato = {
 
-    /**
-     * Constructor.
-     *
-     * @since 1.0.0
-     */
-    init: () => {
-        document.getElementById( 'foo' ).addEventListener( 'click', event => {
-            alert( 'hi' );
-        } );
+    gameEl: document.querySelector( '.game' ),
+
+    setGameState: ( stateName ) => {
+        LearnNato.gameEl.dataset.activeState = stateName;
     },
 
-    /**
-     * Init game's main click event handlers.
-     *
-     * @since 1.0.0
-     */
-    setGameState: ( stateName ) => {
-        this.els.game.dataset.activeState = stateName;
-    }
+    init: () => {
+        document.querySelectorAll( 'button' ).forEach( button => {
+            button.addEventListener( 'click', event => {
+                if ( 'undefined' === typeof event.target.dataset.action ) {
+                    return;
+                }
 
+                LearnNato.setGameState( event.target.dataset.action );
+            } );
+        } );
+    }
 };

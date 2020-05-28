@@ -2,22 +2,49 @@
     align-items: center;
     display: flex;
     flex-direction: column;
-    height: calc( 100vh - 2rem );
+    height: calc( 100vh - 4rem );
     justify-content: center;
-    padding: 1rem;
+    padding: 2rem 4rem;
     position: relative;
-    width: calc( 100vw - 2rem );
+    width: calc( 100vw - 8rem );
 
     &__nav {
+        display: none;
         left: 0;
-        padding: 1rem;
-        position: absolute;
+        padding: 2rem 0 0 2rem;
+        position: fixed;
         top: 0;
         width: calc( 100% - 2rem );
     }
 
     &__state {
         display: none;
+    }
+
+    form  {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 1rem;
+        position: relative;
+
+        label {
+            font-size: 15rem;
+            margin-bottom: 1rem;
+        }
+
+        input {
+            border: 0;
+            padding: 0.5rem;
+            width: calc( 100% - 1rem );
+        }
+
+        button {
+            margin: 1rem 0;
+            padding: 1rem 1.5rem;
+            width: 100%;
+        }
     }
 }
 
@@ -39,6 +66,10 @@
     .game__state.instructions {
         display: block;
     }
+
+    .game__nav {
+        display: block;
+    }
 }
 
 .game[data-active-state=play] {
@@ -47,6 +78,10 @@
     }
 
     .game__state.play {
+        display: block;
+    }
+
+    .game__nav {
         display: block;
     }
 }

@@ -12,7 +12,7 @@
     <div class="game" data-active-state="intro">
 
         <header class="game__nav">
-            <button type="button" class="game__back" data-action="intro">&larr;</button>
+            <button class="button" type="button" class="game__back" data-action="intro">&larr;</button>
         </header>
 
         <!--
@@ -35,12 +35,21 @@
             STATE: Instructions.
         -->
         <section class="instructions game__state" data-state="instructions">
-            <header>
-                <h3>Instructions</h3>
-            </header>
-
             <main>
-                <p></p>
+                <h3>Instructions</h3>
+
+                <ol>
+                    <li>A random letter will appear, like "A".</li>
+                    <li>Enter your guess code word for this letter.</li>
+                    <li>If your guess is correct, another letter will appear.</li>
+                    <li>If you finish the whole alphabet, you win!</li>
+                </ol>
+
+                <h3>Tips</h3>
+                <ul>
+                    <li>There is some flexibility with the spelling of your guesses, as the important thing is how a code word <strong>sounds</strong>.</li>
+                    <li>For example, "alpha" and "alfa" would both work as code words for "A".</li>
+                </ul>
             </main>
         </section>
 
@@ -48,7 +57,7 @@
             STATE: Game.
         -->
         <section class="play game__state" data-state="play">
-            <header>
+            <!-- <header>
                 <section class="results">
                     <span class="result result--success">A</span>
                     <span class="result result--success">B</span>
@@ -77,10 +86,10 @@
                     <span class="result">Y</span>
                     <span class="result">Z</span>
                 </section>
-            </header>
+            </header> -->
 
             <main>
-                <form novalidate>
+                <form novalidate autocomplete="off">
                     <label>A</label>
                     <input placeholder="" />
                     <button type="button">Submit</button>

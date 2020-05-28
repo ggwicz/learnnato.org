@@ -1,18 +1,38 @@
 html {
     background: $blue--light;
     color: $white;
-    font-family: Corbel, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", "Bitstream Vera Sans", "Liberation Sans", Verdana, "Verdana Ref", sans-serif;
+    font-family: $font--primary;
     height: 100vh;
     width: 100vw;
 }
 
-button {
-    cursor: pointer !important;
+body {
+    line-height: 1.4;
 }
 
-#foo { cursor: pointer !important; }
-
 a {
+    border-bottom: 1px solid $white;
     color: $white;
     text-decoration: none;
+
+    &:hover {
+        border-bottom: 1px solid $yellow;
+        color: $yellow;
+    }
+}
+
+button {
+    background: $blue--dark;
+    border: 0;
+    border-radius: 0.5rem;
+    color: $white;
+    cursor: pointer;
+    display: inline-block;
+    font-family: $font--primary;
+    padding: 0.5rem 1rem;
+
+    &:hover {
+        background: $blue--medium;
+        cursor: pointer;
+    }
 }
