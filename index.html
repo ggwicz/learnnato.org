@@ -40,7 +40,7 @@
 
                 <ol>
                     <li>A random letter will appear, like "A".</li>
-                    <li>Enter your guess code word for this letter.</li>
+                    <li>Enter your guess for the code word for this letter.</li>
                     <li>If your guess is correct, another letter will appear.</li>
                     <li>If you finish the whole alphabet, you win!</li>
                 </ol>
@@ -57,48 +57,19 @@
             STATE: Game.
         -->
         <section class="play game__state" data-state="play">
-            <!-- <header>
-                <section class="results">
-                    <span class="result result--success">A</span>
-                    <span class="result result--success">B</span>
-                    <span class="result">C</span>
-                    <span class="result result--missed">D</span>
-                    <span class="result">E</span>
-                    <span class="result">F</span>
-                    <span class="result result--success">G</span>
-                    <span class="result result--success">H</span>
-                    <span class="result">I</span>
-                    <span class="result">J</span>
-                    <span class="result">K</span>
-                    <span class="result result--success">L</span>
-                    <span class="result">M</span>
-                    <span class="result">N</span>
-                    <span class="result">O</span>
-                    <span class="result">P</span>
-                    <span class="result">Q</span>
-                    <span class="result result--missed">R</span>
-                    <span class="result">S</span>
-                    <span class="result">T</span>
-                    <span class="result result--missed">U</span>
-                    <span class="result">V</span>
-                    <span class="result">W</span>
-                    <span class="result">X</span>
-                    <span class="result">Y</span>
-                    <span class="result">Z</span>
-                </section>
-            </header> -->
-
             <main>
                 <form novalidate autocomplete="off">
                     <label>A</label>
-                    <input placeholder="" />
+                    <input placeholder="Code word?" />
                     <button type="button">Submit</button>
                 </form>
             </main>
+            <footer class="results">
+            </footer>
         </section>
-
     </div>
 
+    <script src="src/js/nato.js"></script>
     <script src="src/js/app.js"></script>
     <script>
         window.addEventListener( 'DOMContentLoaded', event => {

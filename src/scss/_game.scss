@@ -85,3 +85,17 @@
         display: block;
     }
 }
+
+.results {
+    align-items: center;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    width: 100%;
+}
+
+.result {
+    flex: 1 6%;
+    padding: 0 0.25em 0.5em 0;
+    text-align: center;
+}
