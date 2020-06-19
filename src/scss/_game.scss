@@ -110,11 +110,30 @@
 
 .result {
     flex: 1 6%;
-    padding: 0 0.25em 0.5em 0;
+    margin: 0 0.15rem;
+    padding: 0.15rem 0.25rem 0;
+    position: relative;
     text-align: center;
 
     &[data-success=true] {
-        background: green;
+        opacity: 0.7;
+
+        &:before {
+            border-color: inherit;
+            border-top: 3px solid;
+            content: '';
+            left: 0;
+            opacity: 1.0;
+            position: absolute;
+            right: 0;
+            top: 50%;
+
+            -webkit-transform: rotate( -5deg );
+            -moz-transform: rotate( -5deg );
+            -ms-transform: rotate( -5deg );
+            -o-transform: rotate( -5deg );
+            transform: rotate( -5deg );
+        }
     }
 }
 
