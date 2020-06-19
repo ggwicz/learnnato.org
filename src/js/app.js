@@ -12,7 +12,9 @@ const LearnNato = {
     els: {
         game: document.querySelector( '.game' ),
         play: document.querySelector( '.play' ),
-        results: document.querySelector( '.results' )
+        results: document.querySelector( '.results' ),
+        errors: document.querySelector( '.errors' ),
+        guessField: document.querySelector( '.guess' )
     },
 
     /**
@@ -20,7 +22,6 @@ const LearnNato = {
      */
     init: () => {
         LearnNato.initButtons();
-        LearnNato.initHandlers();
         LearnNato.renderResults();
     },
 
@@ -95,6 +96,17 @@ const LearnNato = {
      * Handle submitting a guess at a character's code word.
      */
     handleGuessSubmission: () => {
+        let character = LearnNato.els.game.dataset.activeCharacter;
+        let codeWords = window.nato[ LearnNato.els.game.dataset.activeCharacter ];
+        let guess = LearnNato.els.guessField.value;
+
+        if ( ! guess ) {
+            LearnNato.renderError( 'Enter your guess for this character\'s code word.' );
+            return;
+        }
+
+        LearnNato.els.errors.innerHTML = '';
+
         // get the current character's code words
         // compare submission to those values
         // if match, success
@@ -113,6 +125,15 @@ const LearnNato = {
             LearnNato.els.results.innerHTML += `<span class="result" data-character="${character}">${character.toUpperCase()}</span>`;
             window.nato[ character ].success = false;
         } );
+    },
+
+    /**
+     * Render an error.
+     *
+     * @param {string} errorMessage The error message to render.
+     */
+    renderError: ( errorMessage ) => {
+        LearnNato.els.errors.innerHTML = `<span class="error">${errorMessage}</span>`;
     }
 
 };

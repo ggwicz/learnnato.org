@@ -449,7 +449,7 @@ button:hover {
   position: relative;
 }
 .game form label {
-  font-size: 15rem;
+  font-size: 12rem;
   margin-bottom: 1rem;
 }
 .game form input {
@@ -502,4 +502,12 @@ button:hover {
   flex: 1 6%;
   padding: 0 0.25em 0.5em 0;
   text-align: center;
+}
+
+.error {
+  color: #f7e927;
+  display: block;
+  margin-bottom: 2em;
+  text-align: center;
+  width: 100%;
 }

@@ -39,16 +39,16 @@
                 <h3>Instructions</h3>
 
                 <ol>
-                    <li>A random letter will appear, like "A".</li>
-                    <li>Enter your guess for the code word for this letter.</li>
+                    <li>A random letter will appear (for example, "A").</li>
+                    <li>Enter your guess for the code word for this letter (for example, "alpha").</li>
                     <li>If your guess is correct, another letter will appear.</li>
                     <li>If you finish the whole alphabet, you win!</li>
                 </ol>
 
                 <h3>Tips</h3>
                 <ul>
-                    <li>There is some flexibility with the spelling of your guesses, as the important thing is how a code word <strong>sounds</strong>.</li>
-                    <li>For example, "alpha" and "alfa" would both work as code words for "A".</li>
+                    <li>There's some flexibility with the spelling of your guesses, as the important thing is how a code word <strong>sounds</strong>.</li>
+                    <li>For example, "alpha" and "alfa" would both be accepted as code words for "A".</li>
                 </ul>
             </main>
         </section>
@@ -60,7 +60,8 @@
             <main>
                 <form novalidate autocomplete="off">
                     <label></label>
-                    <input placeholder="Code word?" />
+                    <div class="errors"></div>
+                    <input class="guess" placeholder="Code word?" />
                     <button class="submit" type="button">Submit</button>
                 </form>
             </main>
