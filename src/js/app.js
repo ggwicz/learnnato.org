@@ -22,7 +22,7 @@ const LearnNato = {
      */
     init: () => {
         LearnNato.initButtons();
-        LearnNato.renderResults();
+        LearnNato.renderResults( true );
     },
 
     /**
@@ -34,27 +34,21 @@ const LearnNato = {
         LearnNato.els.game.dataset.activeState = stateName;
 
         if ( 'play' === stateName ) {
-            LearnNato.startGameLoop();
+            LearnNato.gameLoop();
         }
     },
 
     /**
-     * Start game loop.
+     * Game loop: sets game's active game character, or handles victory condition.
      */
-    startGameLoop: () => {
-        LearnNato.setActiveCharacter();
-    },
-
-    /**
-     * Set the game's active game character.
-     */
-    setActiveCharacter: () => {
+    gameLoop: () => {
         const nextUnsolved = LearnNato.getNextUnsolvedCharacter();
 
         if ( null === nextUnsolved || undefined == nextUnsolved ) {
             LearnNato.setGameState( 'victory' );
         } else {
             LearnNato.els.game.dataset.activeCharacter = nextUnsolved;
+            LearnNato.els.guessField.value = '';
             LearnNato.els.play.querySelector( 'label' ).textContent = LearnNato.els.game.dataset.activeCharacter.toUpperCase();
         }
     },
@@ -90,13 +84,20 @@ const LearnNato = {
             event.preventDefault();
             LearnNato.handleGuessSubmission();
         } );
+
+        // Disable form submission on clicking enter key.
+        document.addEventListener( 'keydown', event => {
+            if ( event.key && 'Enter' === event.key ) {
+                event.preventDefault();
+            }
+        } );
     },
 
     /**
      * Handle submitting a guess at a character's code word.
      */
     handleGuessSubmission: () => {
-        let character = LearnNato.els.game.dataset.activeCharacter;
+        // let character = LearnNato.els.game.dataset.activeCharacter;
         let codeWords = window.nato[ LearnNato.els.game.dataset.activeCharacter ];
         let guess = LearnNato.els.guessField.value;
 
@@ -106,6 +107,10 @@ const LearnNato = {
         }
 
         LearnNato.els.errors.innerHTML = '';
+
+        if ( codeWords.includes( guess ) ) {
+            LearnNato.handleSuccessfulGuess();
+        }
 
         // get the current character's code words
         // compare submission to those values
@@ -117,14 +122,29 @@ const LearnNato = {
         // - stay on character, clear input, say "incorrect, try again".
     },
 
+    handleSuccessfulGuess: () => {
+        window.nato[ LearnNato.els.game.dataset.activeCharacter ].success = true;
+        LearnNato.renderResults();
+        LearnNato.gameLoop();
+    },
+
     /**
      * Render results.
      */
-    renderResults: () => {
+    renderResults: ( initialState = false ) => {
+        let results = '';
+
         Object.keys( window.nato ).forEach( character => {
-            LearnNato.els.results.innerHTML += `<span class="result" data-character="${character}">${character.toUpperCase()}</span>`;
-            window.nato[ character ].success = false;
+
+            // On initial state, start with every character having success false.
+            if ( initialState ) {
+                window.nato[ character ].success = false;
+            }
+
+            results += `<span class="result" data-character="${character}" data-success="${window.nato[ character ].success}">${character.toUpperCase()}</span>`;
         } );
+
+        LearnNato.els.results.innerHTML = results;
     },
 
     /**
