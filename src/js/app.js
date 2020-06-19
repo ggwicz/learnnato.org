@@ -107,7 +107,10 @@ const LearnNato = {
             return;
         }
 
+        // Clear out any preexisting errors from either empty guesses or wrong ones.
         LearnNato.els.errors.innerHTML = '';
+
+        guess = guess.toLowerCase().trim();
 
         // A correct guess.
         if ( codeWords.includes( guess ) ) {
