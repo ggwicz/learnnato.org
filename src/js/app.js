@@ -36,6 +36,8 @@ const LearnNato = {
         if ( 'play' === stateName ) {
             LearnNato.gameLoop();
         }
+
+        console.log( 'new state:', stateName );
     },
 
     /**
@@ -85,10 +87,11 @@ const LearnNato = {
             LearnNato.handleGuessSubmission();
         } );
 
-        // Disable form submission on clicking enter key.
+        // Attempt to prevent page refresh upon Enter click.
         document.addEventListener( 'keydown', event => {
             if ( event.key && 'Enter' === event.key ) {
                 event.preventDefault();
+                LearnNato.handleGuessSubmission();
             }
         } );
     },
@@ -97,7 +100,6 @@ const LearnNato = {
      * Handle submitting a guess at a character's code word.
      */
     handleGuessSubmission: () => {
-        // let character = LearnNato.els.game.dataset.activeCharacter;
         let codeWords = window.nato[ LearnNato.els.game.dataset.activeCharacter ];
         let guess = LearnNato.els.guessField.value;
 
@@ -110,16 +112,9 @@ const LearnNato = {
 
         if ( codeWords.includes( guess ) ) {
             LearnNato.handleSuccessfulGuess();
+        } else {
+            LearnNato.renderError( LearnNato.getWrongGuessMessage() );
         }
-
-        // get the current character's code words
-        // compare submission to those values
-        // if match, success
-        // - update corresponding "result" icon for character
-        // - load next unsolved character
-        // if no match, failure
-        // - update corresponding "result" icon for character
-        // - stay on character, clear input, say "incorrect, try again".
     },
 
     handleSuccessfulGuess: () => {
@@ -154,6 +149,22 @@ const LearnNato = {
      */
     renderError: ( errorMessage ) => {
         LearnNato.els.errors.innerHTML = `<span class="error">${errorMessage}</span>`;
+    },
+
+    /**
+     * Simple helper for getting one of a variety of "wrong guess" messages.
+     *
+     * @return {string}
+     */
+    getWrongGuessMessage: () => {
+        const messages = [
+            'Incorrect. Try again.',
+            'Wrong code word. Try again.',
+            'Not quite right—guess again.',
+            'That doesn\'t look right, try again.'
+        ];
+
+        return messages[ Math.floor( Math.random() * messages.length ) ];
     }
 
 };

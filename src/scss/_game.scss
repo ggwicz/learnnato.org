@@ -4,9 +4,9 @@
     flex-direction: column;
     height: calc( 100vh - 4rem );
     justify-content: center;
-    padding: 2rem 4rem;
+    padding: 2rem 3rem;
     position: relative;
-    width: calc( 100vw - 8rem );
+    width: calc( 100vw - 6rem );
 
     &__nav {
         display: none;
@@ -78,6 +78,20 @@
     }
 
     .game__state.play {
+        display: block;
+    }
+
+    .game__nav {
+        display: block;
+    }
+}
+
+.game[data-active-state=victory] {
+    .game__state {
+        display: none;
+    }
+
+    .game__state.victory {
         display: block;
     }
 
