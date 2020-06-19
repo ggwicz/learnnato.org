@@ -112,6 +112,10 @@
     flex: 1 6%;
     padding: 0 0.25em 0.5em 0;
     text-align: center;
+
+    &[data-success=true] {
+        background: green;
+    }
 }
 
 .error {

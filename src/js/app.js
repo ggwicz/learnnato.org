@@ -34,10 +34,9 @@ const LearnNato = {
         LearnNato.els.game.dataset.activeState = stateName;
 
         if ( 'play' === stateName ) {
+            LearnNato.renderResults( true );
             LearnNato.gameLoop();
         }
-
-        console.log( 'new state:', stateName );
     },
 
     /**

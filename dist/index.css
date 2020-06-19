@@ -513,6 +513,9 @@ button:hover {
   padding: 0 0.25em 0.5em 0;
   text-align: center;
 }
+.result[data-success=true] {
+  background: green;
+}
 
 .error {
   color: #f7e927;
