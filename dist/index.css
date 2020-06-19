@@ -509,7 +509,7 @@ button:hover {
 }
 
 .result {
-  flex: 1 6%;
+  display: inline-block;
   margin: 0 0.15rem;
   padding: 0.15rem 0.25rem 0;
   position: relative;
