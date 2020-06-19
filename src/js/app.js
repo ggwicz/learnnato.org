@@ -109,13 +109,20 @@ const LearnNato = {
 
         LearnNato.els.errors.innerHTML = '';
 
+        // A correct guess.
         if ( codeWords.includes( guess ) ) {
             LearnNato.handleSuccessfulGuess();
+
+        // An incorrect guess.
         } else {
+            LearnNato.els.guessField.value = '';
             LearnNato.renderError( LearnNato.getWrongGuessMessage() );
         }
     },
 
+    /**
+     * On a successful guess, update the character's success status, refresh results, and do next game loop tick.
+     */
     handleSuccessfulGuess: () => {
         window.nato[ LearnNato.els.game.dataset.activeCharacter ].success = true;
         LearnNato.renderResults();
