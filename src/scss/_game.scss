@@ -171,3 +171,16 @@
         font-style: italic;
     }
 }
+
+.credits {
+    bottom: 0.75rem;
+    font-size: 0.75rem;
+    opacity: 0.5;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+
+    &:hover {
+        opacity: 1.0;
+    }
+}
