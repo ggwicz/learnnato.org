@@ -27,7 +27,7 @@ const LearnNato = {
      */
     init: () => {
         LearnNato.initButtons();
-        LearnNato.renderResults( true );
+        LearnNato.renderResults();
     },
 
     /**
@@ -39,7 +39,7 @@ const LearnNato = {
         LearnNato.els.game.dataset.activeState = stateName;
 
         if ( 'play' === stateName ) {
-            LearnNato.renderResults( true );
+            LearnNato.renderResults();
             LearnNato.gameLoop();
         }
     },
@@ -138,8 +138,11 @@ const LearnNato = {
     /**
      * Render results.
      */
-    renderResults: ( initialState = false ) => {
+    renderResults: () => {
         let results = '';
+
+        // Clear out any preexisting errors.
+        LearnNato.els.errors.innerHTML = '';
 
         window.nato.forEach( char => {
             results += `<span class="result" data-character="${char.character}" data-success="${char.success}">${char.character.toUpperCase()}</span>`;
