@@ -105,7 +105,7 @@ const LearnNato = {
         let guess = LearnNato.els.guessField.value;
 
         if ( ! guess ) {
-            LearnNato.renderError( 'Enter your guess for this character\'s code word.' );
+            LearnNato.renderError( 'Enter a guess for this character\'s code word.' );
             return;
         }
 
