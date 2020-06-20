@@ -500,6 +500,10 @@ button:hover {
   display: block;
 }
 
+.progress {
+  text-align: center;
+}
+
 .results {
   align-items: center;
   display: flex;
