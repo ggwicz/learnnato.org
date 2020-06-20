@@ -55,7 +55,7 @@ const LearnNato = {
         } else {
             LearnNato.activeChar = nextUnsolved;
             LearnNato.els.guessField.value = '';
-            LearnNato.els.play.querySelector( 'label' ).textContent = LearnNato.activeChar.character.toUpperCase();
+            document.querySelector( '.active-character' ).textContent = LearnNato.activeChar.character.toUpperCase();
         }
     },
 

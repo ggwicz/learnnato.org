@@ -6,6 +6,7 @@
     <meta name="description" content="A simple tool for learning and practicing the NATO phonetic alphabet.">
     <meta name="author" content="George Gecewicz">
     <title>Learn the NATO Alphabet</title>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
     <link href="dist/index.css" rel="stylesheet">
 </head>
 <body>
@@ -15,65 +16,39 @@
             <button class="button" type="button" class="game__back" data-action="intro">&larr;</button>
         </header>
 
-        <!--
-            STATE: Intro/default.
-        -->
         <section class="intro game__state" data-state="intro">
             <header>
-                <p>The <a href="https://en.wikipedia.org/wiki/NATO_phonetic_alphabet" target="_blank">NATO phonetic alphabet</a> is useful and easy to learn.</p>
+                <p class="lead">The <a href="https://en.wikipedia.org/wiki/NATO_phonetic_alphabet" target="_blank">NATO phonetic alphabet</a> is useful and easy to learn. Practice your knowledge of it here!</p>
             </header>
 
-            <main>
-                <section class="intro__buttons">
-                    <button id="foo" type="button" class="intro__button" data-action="instructions">Instructions</button>
-                    <button id="bar" type="button" class="intro__button" data-action="play">Play</button>
-                </section>
-            </main>
-        </section>
-
-        <!--
-            STATE: Instructions.
-        -->
-        <section class="instructions game__state" data-state="instructions">
-            <main>
-                <h3>Instructions</h3>
-
+            <main class="instructions">
                 <ol>
                     <li>A random letter will appear (for example, "A").</li>
                     <li>Enter your guess for the code word for this letter (for example, "alpha").</li>
                     <li>If your guess is correct, another letter will appear.</li>
                     <li>If you finish the whole alphabet, you win!</li>
                 </ol>
-
-                <h3>Tips</h3>
-                <ul>
-                    <li>There's some flexibility with the spelling of your guesses, as the important thing is how a code word <strong>sounds</strong>.</li>
-                    <li>For example, "alpha" and "alfa" would both be accepted as code words for "A".</li>
-                </ul>
             </main>
+
+            <footer class="intro__buttons">
+                <button id="bar" type="button" class="intro__button" data-action="play">Play</button>
+            </footer>
         </section>
 
-        <!--
-            STATE: Game.
-        -->
         <section class="play game__state" data-state="play">
             <main>
-                <form novalidate autocomplete="off">
-                    <label></label>
-                    <div class="errors"></div>
-                    <input class="guess" placeholder="Code word?" />
-                    <button class="submit" type="button">Submit</button>
-                </form>
+                <div class="active-character"></div>
+                <div class="errors"></div>
+                <input class="guess" placeholder="Code word?" />
+                <button class="submit" type="button">Submit</button>
             </main>
+
             <footer class="progress">
                 <h3>Progress</h3>
                 <div class="results"></div>
             </footer>
         </section>
 
-         <!--
-            STATE: Victory.
-        -->
         <section class="victory game__state" data-state="victory">
             <main>
                 <h2>Success!</h2>

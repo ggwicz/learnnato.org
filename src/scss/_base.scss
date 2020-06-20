@@ -1,6 +1,6 @@
 html {
-    background: $blue--light;
-    color: $white;
+    background: $color--background;
+    color: $color--paragraph;
     font-family: $font--primary;
     height: 100vh;
     width: 100vw;
@@ -10,29 +10,33 @@ body {
     line-height: 1.4;
 }
 
+h1, h2, h3, h4 {
+    font-weight: 400;
+}
+
 a {
-    border-bottom: 1px solid $white;
-    color: $white;
+    border-bottom: 1px solid $color--button;
+    color: $color--button;
     text-decoration: none;
 
     &:hover {
-        border-bottom: 1px solid $yellow;
-        color: $yellow;
+        border-bottom: 1px solid lighten( $color--button, 10% );
+        color: lighten( $color--button, 10% );
     }
 }
 
 button {
-    background: $blue--dark;
+    background: $color--button;
     border: 0;
     border-radius: 0.5rem;
-    color: $white;
+    color: $color--button-text;
     cursor: pointer;
     display: inline-block;
     font-family: $font--primary;
     padding: 0.5rem 1rem;
 
     &:hover {
-        background: $blue--medium;
+        background: lighten( $color--button, 5% );
         cursor: pointer;
     }
 }

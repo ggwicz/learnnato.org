@@ -338,9 +338,9 @@ template {
 }
 
 html {
-  background: #493ed1;
-  color: #fff;
-  font-family: Corbel, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", "Bitstream Vera Sans", "Liberation Sans", Verdana, "Verdana Ref", sans-serif;
+  background: #fffffe;
+  color: #2b2c34;
+  font-family: "Rubik", sans-serif;
   height: 100vh;
   width: 100vw;
 }
@@ -349,38 +349,42 @@ body {
   line-height: 1.4;
 }
 
+h1, h2, h3, h4 {
+  font-weight: 400;
+}
+
 a {
-  border-bottom: 1px solid #fff;
-  color: #fff;
+  border-bottom: 1px solid #6246ea;
+  color: #6246ea;
   text-decoration: none;
 }
 a:hover {
-  border-bottom: 1px solid #f7e927;
-  color: #f7e927;
+  border-bottom: 1px solid #8974ef;
+  color: #8974ef;
 }
 
 button {
-  background: #1f196d;
+  background: #6246ea;
   border: 0;
   border-radius: 0.5rem;
-  color: #fff;
+  color: #fffffe;
   cursor: pointer;
   display: inline-block;
-  font-family: Corbel, "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", "Bitstream Vera Sans", "Liberation Sans", Verdana, "Verdana Ref", sans-serif;
+  font-family: "Rubik", sans-serif;
   padding: 0.5rem 1rem;
 }
 button:hover {
-  background: #342b9f;
+  background: #755ded;
   cursor: pointer;
 }
 
-.intro__button {
-  margin: 0 0.5rem 0 0;
-  padding: 0.75rem 1.5rem;
+.lead {
+  font-size: 1.4rem;
+  margin: 0 0 2rem 0;
 }
 
 .instructions {
-  max-width: 25rem;
+  margin-bottom: 3rem;
 }
 .instructions ol {
   counter-reset: learnnato-instructions;
@@ -389,19 +393,19 @@ button:hover {
 }
 .instructions ol li {
   counter-increment: learnnato-instructions;
-  margin: 0 0 1rem 0;
+  margin: 0 0 1.5rem 0;
   padding: 0 0 0 2rem;
   position: relative;
 }
 .instructions ol li::before {
-  background: #fff;
+  background: #d1d1e9;
   border-radius: 50%;
-  color: #1f196d;
+  color: #2b2c34;
   content: counter(learnnato-instructions);
   display: inline-block;
   font-size: 0.8rem;
-  margin: 0 0.5rem 0 -2rem;
-  padding: 0.25rem 0.5rem;
+  margin: 0.35rem 0.5rem 0 -2rem;
+  padding: 0.15rem 0.5rem;
   position: absolute;
   text-align: center;
 }
@@ -419,13 +423,19 @@ button:hover {
   margin-top: 3rem;
 }
 
+.intro__button {
+  margin: 0 0.5rem 0 0;
+  padding: 0.75rem 1.5rem;
+  width: 100%;
+}
+
 .game {
-  align-items: center;
+  align-items: s center;
   display: flex;
   flex-direction: column;
   height: calc( 100vh - 4rem );
   justify-content: center;
-  padding: 2rem 3rem;
+  padding: 1rem 3rem;
   position: relative;
   width: calc( 100vw - 6rem );
 }
@@ -440,7 +450,7 @@ button:hover {
 .game__state {
   display: none;
 }
-.game form {
+.game .play > main {
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -448,19 +458,23 @@ button:hover {
   padding: 1rem;
   position: relative;
 }
-.game form label {
-  font-size: 12rem;
-  margin-bottom: 1rem;
-}
-.game form input {
+.game .play > main input {
   border: 0;
   padding: 0.5rem;
   width: calc( 100% - 1rem );
 }
-.game form button {
+.game .play > main input.guess {
+  border: 2px solid #2b2c34;
+  border-radius: 0.5rem;
+}
+.game .play > main button {
   margin: 1rem 0;
   padding: 1rem 1.5rem;
   width: 100%;
+}
+.game .active-character {
+  font-size: 12rem;
+  margin-bottom: 1rem;
 }
 
 .game[data-active-state=intro] .game__state {
@@ -539,7 +553,7 @@ button:hover {
 }
 
 .error {
-  color: #f7e927;
+  color: #e45858;
   display: block;
   margin-bottom: 2em;
   text-align: center;

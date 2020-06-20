@@ -1,10 +1,10 @@
 .game {
-    align-items: center;
+    align-items:s center;
     display: flex;
     flex-direction: column;
     height: calc( 100vh - 4rem );
     justify-content: center;
-    padding: 2rem 3rem;
+    padding: 1rem 3rem;
     position: relative;
     width: calc( 100vw - 6rem );
 
@@ -21,7 +21,7 @@
         display: none;
     }
 
-    form  {
+    .play > main  {
         align-items: center;
         display: flex;
         flex-direction: column;
@@ -29,15 +29,15 @@
         padding: 1rem;
         position: relative;
 
-        label {
-            font-size: 12rem;
-            margin-bottom: 1rem;
-        }
-
         input {
             border: 0;
             padding: 0.5rem;
             width: calc( 100% - 1rem );
+
+            &.guess {
+                border: 2px solid $color--paragraph;
+                border-radius: 0.5rem;
+            }
         }
 
         button {
@@ -45,6 +45,11 @@
             padding: 1rem 1.5rem;
             width: 100%;
         }
+    }
+
+    .active-character {
+        font-size: 12rem;
+        margin-bottom: 1rem;
     }
 }
 
@@ -142,7 +147,7 @@
 }
 
 .error {
-    color: $yellow;
+    color: $color--tertiary;
     display: block;
     margin-bottom: 2em;
     text-align: center;
