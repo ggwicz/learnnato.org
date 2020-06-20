@@ -489,11 +489,7 @@ button:hover {
 }
 .game__nav {
   display: none;
-  left: 0;
-  padding: 2rem 2rem 0;
-  position: fixed;
-  top: 0;
-  width: calc( 100% - 4rem );
+  width: 100%;
 }
 .game__nav h3 {
   float: left;
@@ -528,8 +524,7 @@ button:hover {
   width: 100%;
 }
 .game .active-character {
-  font-size: 12rem;
-  margin-bottom: 1rem;
+  font-size: 10rem;
 }
 
 .game[data-active-state=intro] .game__state {
@@ -546,6 +541,7 @@ button:hover {
   display: block;
 }
 .game[data-active-state=instructions] .game__nav {
+  clear: both;
   display: block;
 }
 
@@ -592,8 +588,7 @@ button:hover {
   opacity: 0.7;
 }
 .result[data-success=true]:before {
-  border-color: inherit;
-  border-top: 3px solid;
+  border-top: 3px solid #6246ea;
   content: "";
   left: 0;
   opacity: 1;
@@ -607,10 +602,20 @@ button:hover {
   transform: rotate(-5deg);
 }
 
-.error {
-  color: #e45858;
+.notices {
+  width: 100%;
+}
+
+.notice {
   display: block;
-  margin-bottom: 2em;
+  margin-bottom: 1rem;
   text-align: center;
   width: 100%;
+}
+.notice.notice-error {
+  color: #e45858;
+}
+.notice.notice-info {
+  color: #afafd9;
+  font-style: italic;
 }

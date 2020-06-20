@@ -18,7 +18,7 @@ const LearnNato = {
         game: document.querySelector( '.game' ),
         play: document.querySelector( '.play' ),
         results: document.querySelector( '.results' ),
-        errors: document.querySelector( '.errors' ),
+        notices: document.querySelector( '.notices' ),
         guessField: document.querySelector( '.guess' )
     },
 
@@ -80,6 +80,11 @@ const LearnNato = {
                     return;
                 }
 
+                if ( 'hint' === event.target.dataset.action  ) {
+                    LearnNato.showHint();
+                    return;
+                }
+
                 LearnNato.setGameState( event.target.dataset.action );
             } );
         } );
@@ -105,12 +110,12 @@ const LearnNato = {
         let guess = LearnNato.els.guessField.value;
 
         if ( ! guess ) {
-            LearnNato.renderError( 'Enter a guess for this character\'s code word.' );
+            LearnNato.renderNotice( 'Enter a guess for this character\'s code word.', 'error' );
             return;
         }
 
-        // Clear out any preexisting errors from either empty guesses or wrong ones.
-        LearnNato.els.errors.innerHTML = '';
+        // Clear out any preexisting notices from either empty guesses or wrong ones.
+        LearnNato.els.notices.innerHTML = '';
 
         guess = guess.toLowerCase().trim();
 
@@ -118,7 +123,7 @@ const LearnNato = {
             LearnNato.handleSuccessfulGuess();
         } else {
             LearnNato.els.guessField.value = '';
-            LearnNato.renderError( LearnNato.getWrongGuessMessage() );
+            LearnNato.renderNotice( LearnNato.getWrongGuessMessage(), 'error' );
         }
     },
 
@@ -141,8 +146,8 @@ const LearnNato = {
     renderResults: () => {
         let results = '';
 
-        // Clear out any preexisting errors.
-        LearnNato.els.errors.innerHTML = '';
+        // Clear out any preexisting notices.
+        LearnNato.els.notices.innerHTML = '';
 
         window.nato.forEach( char => {
             results += `<span class="result" data-character="${char.character}" data-success="${char.success}">${char.character.toUpperCase()}</span>`;
@@ -152,12 +157,21 @@ const LearnNato = {
     },
 
     /**
-     * Render an error.
+     * Render a notice (usually an error notice).
      *
-     * @param {string} errorMessage The error message to render.
+     * @param {string} noticeMessage The notice message to render.
+     * @param {string} noticeType Optional notice type, default is error.
      */
-    renderError: ( errorMessage ) => {
-        LearnNato.els.errors.innerHTML = `<span class="error">${errorMessage}</span>`;
+    renderNotice: ( noticeMessage, noticeType = 'error' ) => {
+        switch ( noticeType ) {
+            case 'info':
+                LearnNato.els.notices.innerHTML = `<span class="notice notice-info">${noticeMessage}</span>`;
+                break;
+            case 'error':
+            default:
+                LearnNato.els.notices.innerHTML = `<span class="notice notice-error">${noticeMessage}</span>`;
+                break;
+        }
     },
 
     /**
@@ -174,6 +188,16 @@ const LearnNato = {
         ];
 
         return messages[ Math.floor( Math.random() * messages.length ) ];
+    },
+
+    /**
+     * Render a hint.
+     *
+     * @return {string}
+     */
+    showHint: () => {
+        let hint = LearnNato.activeChar.codeWords[0];
+        LearnNato.renderNotice( `Code word: "${hint}"`, 'info' );
     }
 
 };
