@@ -1,9 +1,11 @@
 .game {
-    align-items:s center;
+    align-items: center;
     display: flex;
     flex-direction: column;
     height: calc( 100vh - 4rem );
     justify-content: center;
+    margin: 0 auto;
+    max-width: 48rem;
     padding: 1rem 3rem;
     position: relative;
     width: calc( 100vw - 6rem );
