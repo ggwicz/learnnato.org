@@ -7,6 +7,11 @@
 const LearnNato = {
 
     /**
+     * The currently active character in the game loop.
+     */
+    activeChar: null,
+
+    /**
      * Primary game els.
      */
     els: {
@@ -48,23 +53,21 @@ const LearnNato = {
         if ( null === nextUnsolved || undefined == nextUnsolved ) {
             LearnNato.setGameState( 'victory' );
         } else {
-            LearnNato.els.game.dataset.activeCharacter = nextUnsolved;
+            LearnNato.activeChar = nextUnsolved;
             LearnNato.els.guessField.value = '';
-            LearnNato.els.play.querySelector( 'label' ).textContent = LearnNato.els.game.dataset.activeCharacter.toUpperCase();
+            LearnNato.els.play.querySelector( 'label' ).textContent = LearnNato.activeChar.character.toUpperCase();
         }
     },
 
     /**
-     * Get the next unsolved character in the list.
+     * Get a random unsolved character from the list.
      */
     getNextUnsolvedCharacter: () => {
-        for ( const character in window.nato ) {
-            if ( false === window.nato[ character ].success ) {
-                return character;
-            }
-        }
+        const unsolvedChars = window.nato.filter( char => {
+            return false === char.success;
+        } );
 
-        return null;
+        return unsolvedChars[ Math.floor( Math.random() * unsolvedChars.length ) ];
     },
 
     /**
@@ -99,7 +102,6 @@ const LearnNato = {
      * Handle submitting a guess at a character's code word.
      */
     handleGuessSubmission: () => {
-        let codeWords = window.nato[ LearnNato.els.game.dataset.activeCharacter ];
         let guess = LearnNato.els.guessField.value;
 
         if ( ! guess ) {
@@ -112,11 +114,8 @@ const LearnNato = {
 
         guess = guess.toLowerCase().trim();
 
-        // A correct guess.
-        if ( codeWords.includes( guess ) ) {
+        if ( LearnNato.activeChar.codeWords.includes( guess ) ) {
             LearnNato.handleSuccessfulGuess();
-
-        // An incorrect guess.
         } else {
             LearnNato.els.guessField.value = '';
             LearnNato.renderError( LearnNato.getWrongGuessMessage() );
@@ -127,7 +126,11 @@ const LearnNato = {
      * On a successful guess, update the character's success status, refresh results, and do next game loop tick.
      */
     handleSuccessfulGuess: () => {
-        window.nato[ LearnNato.els.game.dataset.activeCharacter ].success = true;
+        const charIndex = window.nato.findIndex( char => {
+            return char.character === LearnNato.activeChar.character;
+        } );
+
+        window.nato[ charIndex ].success = true;
         LearnNato.renderResults();
         LearnNato.gameLoop();
     },
@@ -138,14 +141,8 @@ const LearnNato = {
     renderResults: ( initialState = false ) => {
         let results = '';
 
-        Object.keys( window.nato ).forEach( character => {
-
-            // On initial state, start with every character having success false.
-            if ( initialState ) {
-                window.nato[ character ].success = false;
-            }
-
-            results += `<span class="result" data-character="${character}" data-success="${window.nato[ character ].success}">${character.toUpperCase()}</span>`;
+        window.nato.forEach( char => {
+            results += `<span class="result" data-character="${char.character}" data-success="${char.success}">${char.character.toUpperCase()}</span>`;
         } );
 
         LearnNato.els.results.innerHTML = results;
