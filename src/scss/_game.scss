@@ -13,10 +13,19 @@
     &__nav {
         display: none;
         left: 0;
-        padding: 2rem 0 0 2rem;
+        padding: 2rem 2rem 0;
         position: fixed;
         top: 0;
-        width: calc( 100% - 2rem );
+        width: calc( 100% - 4rem );
+
+        h3 {
+            float: left;
+            margin: 0.35rem 0 0 0;
+        }
+
+        button {
+            float: right;
+        }
     }
 
     &__state {

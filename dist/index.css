@@ -383,9 +383,6 @@ button:hover {
   margin: 0 0 2rem 0;
 }
 
-.instructions {
-  margin-bottom: 3rem;
-}
 .instructions ol {
   counter-reset: learnnato-instructions;
   list-style: none;
@@ -406,7 +403,7 @@ button:hover {
   content: counter(learnnato-instructions);
   display: inline-block;
   font-size: 0.8rem;
-  margin: 0.35rem 0.5rem 0 -2rem;
+  margin: 0.15rem 0.5rem 0 -2rem;
   padding: 0.15rem 0.5rem;
   position: absolute;
   text-align: center;
@@ -438,8 +435,8 @@ button:hover {
     flex-flow: row wrap;
     justify-content: space-between;
   }
-  .instructions li {
-    padding: 0;
+  .instructions ol li {
+    padding: 0 0 0 2em;
     max-width: 40%;
   }
 }
@@ -447,25 +444,34 @@ button:hover {
 @media screen and (min-width: 50rem) {
   .lead {
     font-size: 1.65rem;
-    margin-bottom: 3rem;
+    margin-bottom: 2.5rem;
   }
 
+  .instructions {
+    padding-bottom: 2rem;
+  }
   .instructions ol {
-    padding-top: 1.85rem;
+    padding-top: 2.65rem;
   }
   .instructions ol li {
-    max-width: 22%;
+    max-width: 20%;
     margin: 0;
     padding: 0;
   }
   .instructions ol li:before {
-    margin-left: 0;
-    margin-top: -1.85rem;
+    background: #fffffe;
+    border-bottom: 2px solid #d1d1e9;
+    border-radius: 0;
+    font-size: 1rem;
+    margin: -2.5rem 0 0 0;
+    padding-left: 0;
+    text-align: left;
+    width: 100%;
   }
 
   .intro__buttons {
     font-size: 1.55rem;
-    margin-top: 3rem;
+    margin: 1rem 25% 0;
     width: 50%;
   }
 }
@@ -484,10 +490,17 @@ button:hover {
 .game__nav {
   display: none;
   left: 0;
-  padding: 2rem 0 0 2rem;
+  padding: 2rem 2rem 0;
   position: fixed;
   top: 0;
-  width: calc( 100% - 2rem );
+  width: calc( 100% - 4rem );
+}
+.game__nav h3 {
+  float: left;
+  margin: 0.35rem 0 0 0;
+}
+.game__nav button {
+  float: right;
 }
 .game__state {
   display: none;
